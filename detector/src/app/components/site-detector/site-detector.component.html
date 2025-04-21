@@ -1,12 +1,12 @@
 <div class="container main-form-detector">
     <div class="row">
-        <h1>Cбор и сохранение дочерних элементов</h1>
+        <h2>Cбор и сохранение дочерних элементов внешних сайтов</h2>
         <div class="col">
-            <span>Example: {{baseUrl}}test-data/data.txt</span>
+            <span class="example-import-file-url">Example import file url: {{baseUrl}}test-data/data.txt</span>
         </div>
         <form [formGroup]="detectorForm">
             <div class="col">
-                <input formControlName="fileUrl" type="url" class="file-url" id="fileUrl" required />
+                <input placeholder="Import file url" formControlName="fileUrl" type="url" class="file-url" id="fileUrl" required />
                 <div *ngIf="fileUrl.invalid && (fileUrl.dirty || fileUrl.touched)" class="error-input">
                     <div *ngIf="fileUrl.errors?.['required']">Url is required.</div>
                     <div *ngIf="fileUrl.errors?.['invalidUrl']">
@@ -14,7 +14,8 @@
                     </div>
                 </div>
             </div>
-            <div class="col center">
+            <div class="col">
+                <span class="type-api-header">Type api:</span>
                 @for (item of typeExternalGetHtmlArray; track item) {
                     <label class="type-api">
                         <input type="radio" value="{{item}}" formControlName="typeApi">
@@ -23,7 +24,7 @@
                     } 
             </div>
             <div class="col center">
-                <button [disabled]="fileUrl.invalid" mat-flat-button (click)="onRun()">Run</button>
+                <button class="detect-run-button" [disabled]="fileUrl.invalid" mat-flat-button (click)="onRun()">Run</button>
             </div>
         </form>
         <ngx-ui-loader></ngx-ui-loader>
