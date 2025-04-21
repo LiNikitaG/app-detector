@@ -1,0 +1,35 @@
+<div class="container main-form-detector">
+    <div class="row">
+        <h1>Cбор и сохранение дочерних элементов</h1>
+        <div class="col">
+            <span>Example: {{baseUrl}}test-data/data.txt</span>
+        </div>
+        <form [formGroup]="detectorForm">
+            <div class="col">
+                <input formControlName="fileUrl" type="url" class="file-url" id="fileUrl" required />
+                <div *ngIf="fileUrl.invalid && (fileUrl.dirty || fileUrl.touched)" class="error-input">
+                    <div *ngIf="fileUrl.errors?.['required']">Url is required.</div>
+                    <div *ngIf="fileUrl.errors?.['invalidUrl']">
+                        Invalid Url
+                    </div>
+                </div>
+            </div>
+            <div class="col center">
+                @for (item of typeExternalGetHtmlArray; track item) {
+                    <label class="type-api">
+                        <input type="radio" value="{{item}}" formControlName="typeApi">
+                          <span>{{item}}</span>
+                      </label>
+                    } 
+            </div>
+            <div class="col center">
+                <button [disabled]="fileUrl.invalid" mat-flat-button (click)="onRun()">Run</button>
+            </div>
+        </form>
+        <ngx-ui-loader></ngx-ui-loader>
+        <div class="col center">
+            <a class="btn btn-clear" title="Download JSON" [href]="downloadJsonHref" [ngClass]="{'download-disable' : fileUrl.invalid || !downloadJsonHref}"
+                download="{{nameExportFile}}">Download {{nameExportFile}}</a>
+        </div>
+    </div>
+</div>

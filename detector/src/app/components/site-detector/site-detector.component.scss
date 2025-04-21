@@ -1,0 +1,36 @@
+.main-form-detector {
+    margin-top: 50px;
+    padding-left: 25%;
+    padding-right: 25%;
+
+    .col {
+        margin-bottom: 20px;
+    }
+
+    .file-url {
+        width: 100%;
+        font-size: 20px;
+    }
+
+    .type-api{
+        font-size: 20px;
+    }
+
+    .error-input {
+        font-size: 14px;
+        color: red;
+    }
+
+    .download-disable{
+        color: gray;
+        cursor: text;
+        pointer-events: none;
+        text-decoration: none;
+    }
+
+    .center {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
